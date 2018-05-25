@@ -21,9 +21,9 @@ public class App extends Application<Configuration> {
 
     @Override
     public void run(Configuration c, Environment e) throws Exception {
-        LOGGER.info("Registering sensor_temp");
+        LOGGER.info("Registering sensor_co2");
 
-        SensorDB.runTempSensor(e);
+        SensorDB.runCO2Sensor(e);
 
 
     }

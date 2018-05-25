@@ -19,13 +19,13 @@ public class SensorDB{
     private static final Logger LOGGER = LoggerFactory.getLogger(App.class);
 
     Environment environment;
-    static HashMap<Integer, SensorReading> sensorTemp = new HashMap<>();
+    static HashMap<Integer, SensorReading> sensorCO2 = new HashMap<>();
 
     public SensorDB(Environment environment) {
         this.environment = environment;
     }
 
-    public static void runTempSensor(Environment environment) throws InterruptedException{
+    public static void runCO2Sensor(Environment environment) throws InterruptedException{
 
         Config cfg = new Config();
         final Client client = new JerseyClientBuilder(environment).build("SensorRESTClient");
@@ -40,8 +40,8 @@ public class SensorDB{
 
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         Random r = new Random();
-        int rangeMin = 10;
-        int rangeMax = 30;
+        int rangeMin = 0;
+        int rangeMax = 9;
         int id = 0;
 
         while (true) {
@@ -52,19 +52,19 @@ public class SensorDB{
 
             int randomValue = r.nextInt((rangeMax - rangeMin) + 1) + rangeMin;
 
-            SensorReading sensorReading = new SensorReading(id, "sensor_temp", format.format(now), randomValue, "'C");
+            SensorReading sensorReading = new SensorReading(id, "sensor_co2", format.format(now), randomValue, "ppm");
 
-            sensorTemp.put(id, sensorReading);
+            sensorCO2.put(id, sensorReading);
 
-            webTarget = client.target ("http://localhost:8080/api/sensorReadings/sensor_temp");
+            webTarget = client.target ("http://localhost:8080/api/sensorReadings/sensor_co2");
             response = webTarget.request().post(Entity.json(sensorReading));
 
-            Thread.sleep(5000);
+            Thread.sleep(7000);
         }
     }
 
 
-    public static List<SensorReading> getSensorTemp() {
-        return new ArrayList<>(sensorTemp.values());
+    public static List<SensorReading> getSensorCO2() {
+        return new ArrayList<>(sensorCO2.values());
     }
 }
