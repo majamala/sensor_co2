@@ -48,7 +48,7 @@ public class SensorDB{
 
             id++;
             long now = System.currentTimeMillis();
-            DateFormat format = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+            DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
             int randomValue = r.nextInt((rangeMax - rangeMin) + 1) + rangeMin;
 
