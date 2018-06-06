@@ -19,7 +19,6 @@ public class SensorDB{
     private static final Logger LOGGER = LoggerFactory.getLogger(App.class);
 
     Environment environment;
-    static HashMap<Integer, SensorReading> sensorCO2 = new HashMap<>();
 
     public SensorDB(Environment environment) {
         this.environment = environment;
@@ -42,29 +41,22 @@ public class SensorDB{
         Random r = new Random();
         int rangeMin = 250;
         int rangeMax = 2000;
-        int id = 0;
+
 
         while (true) {
 
-            id++;
             long now = System.currentTimeMillis();
             DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
             int randomValue = r.nextInt((rangeMax - rangeMin) + 1) + rangeMin;
 
-            SensorReading sensorReading = new SensorReading(id, "sensor_co2", format.format(now), randomValue, "ppm");
+            SensorReading sensorReading = new SensorReading("sensor_co2", format.format(now), randomValue, "ppm");
 
-            sensorCO2.put(id, sensorReading);
 
             webTarget = client.target ("http://localhost:8080/api/sensorReadings/sensor_co2");
             response = webTarget.request().post(Entity.json(sensorReading));
 
             Thread.sleep(7000);
         }
-    }
-
-
-    public static List<SensorReading> getSensorCO2() {
-        return new ArrayList<>(sensorCO2.values());
     }
 }
