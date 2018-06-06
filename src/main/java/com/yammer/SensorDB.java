@@ -50,7 +50,7 @@ public class SensorDB{
 
             int randomValue = r.nextInt((rangeMax - rangeMin) + 1) + rangeMin;
 
-            SensorReading sensorReading = new SensorReading("sensor_co2", format.format(now), randomValue, "ppm");
+            SensorReading sensorReading = new SensorReading(cfg.getProperty("name"), format.format(now), randomValue, "ppm");
 
 
             webTarget = client.target ("http://localhost:8080/api/sensorReadings/sensor_co2");
