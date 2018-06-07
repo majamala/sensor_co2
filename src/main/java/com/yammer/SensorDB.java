@@ -53,7 +53,7 @@ public class SensorDB{
             SensorReading sensorReading = new SensorReading(cfg.getProperty("name"), format.format(now), randomValue, "ppm");
 
 
-            webTarget = client.target ("http://localhost:8080/api/sensorReadings/sensor_co2");
+            webTarget = client.target ("http://localhost:8080/api/sensorReadings/"+cfg.getProperty("name"));
             response = webTarget.request().post(Entity.json(sensorReading));
 
             Thread.sleep(7000);
