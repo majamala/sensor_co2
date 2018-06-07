@@ -8,19 +8,19 @@ public class SensorRegister {
     private String name;
     private String location;
     @NotNull
-    private String IPAdress;
+    private String IPAddress;
     private String description;
     private String unit;
     private String meta;
 
     public SensorRegister(String IPAddress) {
-        this.IPAdress = IPAddress;
+        this.IPAddress = IPAddress;
     }
 
-    public SensorRegister(String name, String location, String IPAdress, String description, String unit, String meta) {
+    public SensorRegister(String name, String location, String IPAddress, String description, String unit, String meta) {
         this.name=name;
         this.location=location;
-        this.IPAdress = IPAdress;
+        this.IPAddress = IPAddress;
         this.description=description;
         this.unit=unit;
         this.meta=meta;
@@ -31,7 +31,7 @@ public class SensorRegister {
         return "SensorRegister{" +
                 "name=" + name +
                 ", location='" + location + '\'' +
-                ", IPAdress='" + IPAdress + '\'' +
+                ", IPAddress='" + IPAddress + '\'' +
                 ", description='" + description + '\'' +
                 ", unit='" + unit + '\'' +
                 ", meta='" + meta + '\'' +
@@ -54,12 +54,12 @@ public class SensorRegister {
         this.location = location;
     }
 
-    public String getIPAdress() {
-        return IPAdress;
+    public String getIPAddress() {
+        return IPAddress;
     }
 
-    public void setIPAdress(String IPAdress) {
-        this.IPAdress = IPAdress;
+    public void setIPAddress(String IPAddress) {
+        this.IPAddress = IPAddress;
     }
 
     public String getDescription() {

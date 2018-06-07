@@ -10,10 +10,10 @@ public class SensorInfo {
     private String unit;
     private String meta;
 
-    public SensorInfo(String name, String location, String IPAdress, String port, String description, String unit, String meta) {
+    public SensorInfo(String name, String location, String IPAddress, String port, String description, String unit, String meta) {
         this.name=name;
         this.location=location;
-        this.ipAddr = IPAdress;
+        this.ipAddr = IPAddress;
         this.port = port;
         this.description=description;
         this.unit=unit;
@@ -25,7 +25,7 @@ public class SensorInfo {
         return "SensorInfo{" +
                 "name=" + name +
                 ", location='" + location + '\'' +
-                ", IPAdress='" + ipAddr + '\'' +
+                ", IPAddress='" + ipAddr + '\'' +
                 ", description='" + description + '\'' +
                 ", unit='" + unit + '\'' +
                 ", meta='" + meta + '\'' +
